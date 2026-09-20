@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/styles.css">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+	<title>Geograafia õppematerjal</title>
+</head>
+<body>
+	<div class="tm" id="t0">
+		<button onclick="start()">Alusta ▶</button>
+		<button onclick="prev()">Ülevaatus ▷</button>
+		<button class="sq" onclick="config()" style="line-height: .4em; font-weight: bolder;">―<br>―<br>―</button>
+	</div>
+
+	<div class="tm" id="t1">
+		<button class="sq" onclick="ci(-1)">←</button>
+
+		<div id="count">
+			<p id="ct"></p>
+			<hr>
+			<p id="ca"></p>
+		</div>
+
+		<input type="text" id="aw" onkeyup="ansW()">
+
+		<button class="sq" onclick="ci(1)">→</button>
+		<button class="sq" onclick="topBar(2)">▼</button>
+	</div>
+
+	<div class="tm" id="t2">
+		<button onclick="start()">Alusta uuesti ↺</button>
+		<button id="sz" onclick="mapDisp(1)"></button>
+		<button onclick="end()">Lõpeta ⎋</button>
+		<button class="sq" onclick="topBar(1)">▲</button>
+	</div>
+
+	<div class="tm" id="t3">
+		<button onclick="prev()">Alusta uuesti ↺</button>
+		<button class="sq" onclick="prevKeyD(null, 'ArrowLeft')">←</button>
+		<p id="di"></p>
+		<button class="sq" onclick="prevKeyD(null, 'ArrowRight')">→</button>
+		<button onclick='prevEnd()'>Lõpeta ⎋</button>
+	</div>
+	
+	<div id="d">
+		<div id="c"></div>
+	</div>
+
+	<div id="sel"></div>
+
+	<hr>
+
+	<p>
+		<a href="https://github.com/mk4i/ajalugu0">GitHub</a><br>
+		<a href="https://github.com/mk4i/ajalugu0/blob/main/README.md">README.md</a><br>
+		20. september, 2026
+	</p>
+
+	<div id="conf">
+		<div>
+			<h1>Seadistused</h1>
+			<hr>
+			<h2>Kirjutamine</h2>
+
+			<label class="chk">Täpitähed
+				<input type="checkbox" id="wd" tabindex="0" onchange="saveConf()">
+				<span class="cm"></span>
+			</label>
+
+			<p>
+				<strong>Väljas:</strong> täpitähtede (sh. <i>õäöü</i>) asemel saab kasutada tähti <i>oaou</i>.
+				<strong>Sees:</strong> täpitähed peab õigesti kirjutama.
+			</p>
+
+			<label class="chk">Suur/väike algustäht
+				<input type="checkbox" id="wc" tabindex="0" onchange="saveConf()">
+				<span class="cm"></span>
+			</label>
+
+			<hr>
+			<h2>Küpsised</h2>
+
+			<label class="chk">Seadistuste salvestamine
+				<input type="checkbox" id="ce" tabindex="0" onchange="tCookie(this)">
+				<span class="cm"></span>
+			</label>
+
+			<p>Seadistuste salvestamine kasutab <a href="https://et.wikipedia.org/wiki/HTTP-k%C3%BCpsis">küpsiseid</a>. Selle seadistuse välja lülitamisel kustuvad kõik küpsised koheselt.</p>
+
+			<hr>
+			<h1>Klahviseosed</h1>
+			<p>
+				<strong>←</strong> või <strong>→</strong> aktiveerivad vastuse kasti või valivad eelmise või järgmise vastavalt.<br>
+				<strong>↑</strong> ja <strong>↓</strong> valivad eelmise või järgmise vastavalt.<br>
+				<strong>↵</strong> näitab õiget vastust.<br>
+				<strong>F8</strong> muudab kaardi paigutust ja suumi.<br>
+				<strong>F4</strong> lõpetab või alustab katse.<br>
+				<strong>F2</strong> käivitab ülevaatuse.
+			</p>
+		</div>
+
+		<button onclick="config(0)"></button>
+	</div>
+
+	<script src="/script.js"></script>
+</body>

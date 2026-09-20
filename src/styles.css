@@ -1,0 +1,477 @@
+@font-face {
+	font-family: "Inter";
+	src: url("/i.woff2") format("truetype");
+	/*font-feature-settings: "tnum";
+	font-variation-settings: "opsz" 14;*/
+}
+
+:root {
+	--transparent: #0000;
+	--bgt: #0004;
+	--bgp: #000;
+	--bg: #000;
+	--sub-bg: #242424;
+	--bgray: #444;
+	--mgray: #666;
+	--gray: #888;
+	--fgray: #aaa;
+	--sub-fg: #ccc;
+	--fg: #fff;
+	--fgt: #fff4;
+	--red2: #411;
+	--red2trns: #4118;
+	--red3: #822;
+	--red4: #c55;
+	--red5: #f88;
+	--red6: #fcc;
+	--orange2: #320;
+	--orange5: #fc1;
+	--yellow2: #220;
+	--yellow5: #ff0;
+	--green2: #030;
+	--green3: #262;
+	--green4: #4a4;
+	--green5: #5f5;
+	--green6: #9f9;
+	--cyan5: #8cf;
+	--purple5: #8b98d0;
+	--purple6: #abf;
+	/*--purple6trns: #abfa;*/
+	--pink2: #3c0050;
+	--pink5: #c7f;
+	--accent1: hsl(225, 40%, 15%);
+	--accent2: hsl(220, 40%, 30%);
+	--accent3: hsl(213, 40%, 55%);
+	--accent4: hsl(205, 70%, 75%);
+	--accent5: hsl(196, 100%, 71%);
+	--accent6: hsl(194, 100%, 85%);
+	--qo: cubic-bezier(.25, 1, .5, 1); /* quadratic ease-out */
+	--qs: cubic-bezier(0.4, 0.1, 0.5, 1);
+	--border-width: .09rem;
+	--border-style: solid;
+	font-family: Inter;
+	font-size: max(min(20px, 3.2vw), 1.6vw);
+	font-synthesis: weight style small-caps position;
+	--dw: 40rem;
+}
+
+*::placeholder {
+	color: var(--fg);
+	opacity: 40%;
+}
+
+body {
+	background: var(--bg);
+	color: var(--fg);
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	max-width: 100vw;
+	min-height: 100vh;
+	overflow: scroll;
+}
+
+body > p {
+	margin: 1rem auto;
+	width: min(var(--dw), 100vw - .5rem);
+	font-weight: bolder;
+}
+
+body > hr {
+	position: relative;
+	translate: -50%;
+	left: 50%;
+	width: min(var(--dw), 100vw - .5rem);
+}
+
+a {
+	color: var(--purple6);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+hr {
+	align-self: center;
+	width: 99%;
+	border: var(--border-style) var(--border-width) var(--gray);
+	margin: 1rem 0;
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.375rem; }
+
+h1, h2, h3, p {
+	margin: 0;
+}
+
+button, .chk {
+	cursor: pointer;
+	user-select: none;
+}
+
+.chk {
+	display: block;
+	position: relative;
+	padding-left: 2.75rem;
+	margin: .4rem 0;
+	font-size: 1rem;
+}
+
+.chk input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+}
+
+.chk .cm {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1.2rem;
+	width: 2.2rem;
+	background: var(--accent3);
+	border-radius: .5rem;
+}
+
+.chk input:checked ~ .cm {
+	background: var(--green6);
+}
+
+.chk:focus-within input ~ .cm {
+	outline: var(--accent6) solid var(--border-width);
+	outline-offset: var(--border-width);
+}
+
+.chk:hover input:checked ~ .cm {
+	background: var(--accent3);
+}
+
+.chk:hover input ~ .cm {
+	background: var(--accent6);
+	outline: none;
+}
+
+.chk .cm:after {
+	transition: all 250ms var(--qo);
+	content: "";
+	font-size: 1rem;
+	line-height: .84rem;
+	text-align: center;
+	width: .9rem;
+	height: .9rem;
+	border-radius: .4rem;
+	left: .16rem;
+	top: .15rem;
+	font-weight: bolder;
+	position: absolute;
+	background: var(--bgp);
+}
+
+.chk input:checked ~ .cm:after {
+	content: "+";
+	left: 1.14rem;
+	background: var(--accent1);
+}
+
+input[type=text], button, #count {
+	background: var(--bg);
+	border: var(--fgt) var(--border-style) var(--border-width);
+	color: var(--sub-fg);
+	font-family: inherit;
+	font-size: 1rem;
+	padding: .125rem .375rem;
+	border-radius: .75rem;
+	outline: none;
+	text-wrap: nowrap;
+	margin: .25rem;
+	flex: 1;
+}
+
+.g button {
+	border-color: var(--sub-bg);
+}
+
+button:focus {
+	border: var(--accent5) var(--border-style) var(--border-width);
+	color: var(--fg);
+}
+
+button:hover {
+	color: var(--fg);
+	border: var(--border-style) var(--border-width) var(--accent4);
+	outline: none;
+}
+
+input::selection {
+	color: var(--bg);
+	background: var(--fg);
+}
+
+button:active {
+	color: var(--accent6);
+	scale: .98;
+}
+
+#aw {
+	padding-left: .75rem;
+	padding-right: .75rem;
+	margin-left: .75rem;
+	margin-right: .75rem;
+	min-width: 10rem;
+}
+
+#aw:focus {
+	border: var(--accent5) var(--border-style) var(--border-width);
+	color: var(--fg);
+}
+
+#aw:is(.w) {
+	outline-color: var(--red5);
+	background: var(--red2trns);
+	color: var(--red6);
+	border-color: var(--red3);
+}
+
+#aw:is(.w):focus {
+	border-color: var(--red4);
+}
+
+#count {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 2rem;
+}
+
+#count p { line-height: 1.1em; }
+#count #ct { font-size: 1.1rem; color: var(--fg); font-weight: bold; }
+#count #ca { font-size: .6rem; color: var(--fgray); }
+
+#count hr {
+	border: .03rem solid var(--gray);
+	margin: 0;
+	width: 80%;
+}
+
+.tm {
+	position: fixed;
+	display: flex;
+	left: 50%;
+	translate: -50%;
+	width: 100vw;
+	height: 2.75rem;
+	max-width: min(var(--dw), 100vw);
+	z-index: 1;
+}
+
+.tm button, #aw, #count {
+	background: var(--bgt);
+	backdrop-filter: blur(0.5rem);
+	box-shadow: 0 0 1rem #000;
+}
+
+#di {
+	display: flex;
+	width: 20rem;
+	align-items: center;
+	justify-content: center;
+	line-height: 1rem;
+	background: var(--bgt);
+	backdrop-filter: blur(.5rem);
+	margin: .25rem;
+	border-radius: .75rem;
+	border: var(--fgt) var(--border-style) var(--border-width);
+}
+
+.sq {
+	flex: 0 1 3rem;
+}
+
+#m {
+	display: block;
+	background: var(--bgp);
+	margin: 0;
+	padding: 0;
+}
+
+#d {
+	position: relative;
+	top: 2.75rem;
+	display: block;
+	margin: 0 auto 2.75rem;
+	padding: 0;
+	overflow-y: visible;
+	width: calc(100 * var(--l));
+	height: calc(100 * var(--l) / var(--a));
+	--w: 1vw;
+	--h: calc((1vh - .0275rem) * var(--a));
+}
+
+#d:is(.w) { --l: var(--w); }
+#d:is(.h) { --l: var(--h); }
+#d:is(.f) { --l: min(var(--w), var(--h)); }
+
+#c {
+	transition-duration: 250ms;
+	transition-timing-function: var(--qs);
+	font-size: var(--l);
+	transform-origin: top left;
+}
+
+#c p {
+	font-size: 1.5em;
+	color: var(--fg);
+	position: absolute;
+	translate: -50% -50%;
+	background: var(--sub-bg);
+	width: min-content;
+	text-align: center;
+	max-width: 7em;
+	padding: 0 .2em;
+	border: var(--sub-fg) var(--border-style) .125em;
+	border-radius: .5em;
+	user-select: none;
+}
+
+#c .g {
+	background: var(--green2);
+	border-color: var(--green5);
+}
+
+#c .y {
+	background: var(--yellow2);
+	border-color: var(--yellow5);
+}
+
+#c .o {
+	background: var(--orange2);
+	border-color: var(--orange5);
+}
+
+#c .r {
+	background: var(--red2);
+	border-color: var(--red5);
+}
+
+#c .p {
+	background: var(--pink2);
+	border-color: var(--pink5);
+}
+
+.f0 {
+	fill: var(--sub-bg);
+	stroke: var(--purple6);
+	stroke-width: 2;
+}
+
+.w0 {
+	stroke: var(--cyan5);
+	stroke-width: 3;
+	fill: none;
+}
+
+@keyframes a {
+	0% { fill: var(--purple6); }
+	to { fill: var(--purple5); }
+}
+
+.h {
+	animation: a 1.5s infinite alternate ease-in-out;
+	stroke-width: 8;
+	fill: var(--purple6);
+	stroke: var(--purple6);
+	paint-order: stroke;
+}
+
+#sel {
+	margin: 4rem auto 0;
+	width: min(var(--dw), 100vw - .5rem);
+	user-select: none;
+}
+
+#sel .g {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+	gap: .4rem;
+}
+
+#sel .h {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: .5rem;
+	margin: 1rem 0 .25rem;
+}
+
+#sel .h button {
+	flex: 0;
+}
+
+#sel .g button {
+	margin: 0;
+	text-align: left;
+}
+
+#sel .g .s {
+	color: var(--green6);
+	background: var(--green2);
+}
+
+#conf {
+	display: flex;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--bgt);
+	backdrop-filter: contrast(.7) blur(1rem);
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
+}
+
+#conf h1, #conf h2, #conf h3 {
+	margin-bottom: .25em;
+}
+
+#conf p {
+	margin-bottom: .5em;
+}
+
+#conf div {
+	max-height: 100%;
+	overflow-y: scroll;
+	width: 100vw;
+	box-sizing: border-box;
+	padding: 1rem max(50vw - 16rem, 1rem);
+	display: flex;
+	flex-direction: column;
+}
+
+#conf button:last-child {
+	background: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 3rem;
+	height: 3rem;
+	margin: 0;
+	padding: 0;
+	font-size: 1.8rem;
+	line-height: 1rem;
+	border: none;
+	/*background-color: #262;*/
+}
+
+#conf button:last-child:hover {
+	color: var(--fg);
+	font-weight: bolder;
+}
